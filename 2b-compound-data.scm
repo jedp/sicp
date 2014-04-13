@@ -61,12 +61,23 @@
 ; Return y component of p
 (define (ycor p) (cdr p))
 
+;;; Alternately, because procdures can be objects, and you can name them, it
+;;; could simply be:
+;;;
+;;; (define make-vec cons)
+;;; (define xcor car)
+;;; (define ycor cdr)
+
 ;;; representing line segments P -> Q
 
 ;;; Closure: The means of combination in your system are such that, when you
 ;;; put things together using them, you can then put those things together with
 ;;; the same means of combination.  So I can have a pair of numbers, but also a
 ;;; pair of pairs.
+
+(define (scale-vec s v)
+  (make-vec (* s (xcor v))
+            (* s (ycor v))))
 
 (define (make-seg p q) (cons p q))
 
@@ -117,3 +128,4 @@
 ;;;
 ;;; A procedure is not merely the act of doing something.  A procedure is a
 ;;; real object that has existence.
+
