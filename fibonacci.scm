@@ -1,4 +1,4 @@
-; tree-recursive.  Ugh.  O(n^2)
+; tree-recursive.  Naive and awful.  Ugh.  O(n^2)
 
 (define (fib-tree n)
   (cond ((= n 0) 0)
@@ -20,9 +20,12 @@
 ; The closest integer to (phi^n / sqrt(5))
 
 (define phi 1.61803399)
-(define sqrt-5 2.23606797749979)
+; (define sqrt-5 2.23606797749979)
+; apparently, this works also as (phi^n / (phi + 2))
+; neato
+
 (define (fib-def n)
-  (round (/ (expt phi n) sqrt-5)))
+  (round (/ (expt phi n) (+ phi 2))))
 
 ; use the mathematical definition
 
